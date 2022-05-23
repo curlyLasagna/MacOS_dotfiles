@@ -1,0 +1,100 @@
+#!/usr/bin/env sh
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+
+BAR_HEIGHT=24
+
+# Bar border
+BORDER_WIDTH=0
+BORDER_COLOR=0xffffffff
+
+# Padding
+BAR_PADDING=15
+ICON_PADDING=10
+LABEL_PADDING=10
+
+# Icon/Font
+FONT="Microsoft Sans Serif:Regular" 
+FONT_SIZE="13.0"
+ICON_FONT="Font Awesome 5 Free:Solid"
+ICON_SIZE="13.0"
+
+# Colors
+BAR_COLOR=0xff191919
+ICON_COLOR=0xffe1e3e4
+LABEL_COLOR=0xffffffff 
+
+sketchybar                      \
+  --bar                         \
+  color=$BAR_COLOR              \
+  height=$BAR_HEIGHT            \
+  margin=0                      \
+  padding_left=$BAR_PADDING     \
+  padding_right=$BAR_PADDING    \
+  border_width=$BORDER_WIDTH    \
+  border_color=$BORDER_COLOR    \
+  topmost=off
+
+sketchybar                           \
+  --default                          \
+  updates=when_shown                 \
+  label.font="$FONT:$FONT_SIZE"      \
+  label.padding_left=0               \
+  label.padding_right=$LABEL_PADDING \
+  label.background.drawing=on        \
+  icon.font="$ICON_FONT:$FONT_SIZE"  \
+  icon.padding_right=$ICON_PADDING   \
+  icon.padding_left=$ICON_PADDING    \
+  icon.background.drawing=on
+
+# Left items
+sketchybar                       \
+  --add item yabai left          \
+  --set yabai                    \
+  icon=                         \
+  icon.padding_left=5            \
+  update_freq=2                  \
+  script="$PLUGIN_DIR/yabai.sh"
+
+# Right items
+sketchybar                               \
+  --add item power right                 \
+  --set power                            \
+  update_freq=240                        \
+  background.color=0xffdc5c56            \
+  script="$PLUGIN_DIR/power.sh" 
+
+sketchybar                              \
+  --add item volume right               \
+  --set volume                          \
+  update_freq=2                         \
+  background.color=0xff43afbc           \
+  script="$PLUGIN_DIR/get_vol.sh" 
+
+sketchybar                                                                \
+  --add event input_change 'AppleSelectedInputSourcesChangedNotification' \
+  --add item input right                                                  \
+  --set input                                                             \
+  icon=""                                                                \
+  script="$PLUGIN_DIR/input.sh"                                           \
+  background.color=0xff8dc16d                                             \
+  --subscribe input input_change
+
+sketchybar                             \
+ --add item wifi right                 \
+ --set wifi                            \
+ icon=""                              \
+ lazy=on                               \
+ background.color=0xffce5b78           \
+ script="$PLUGIN_DIR/wifi.sh"
+
+# Center items
+sketchybar                              \
+  --add item clock center               \
+  --set clock                           \
+  update_freq=30                        \
+  background.color=0xff50a7ee           \
+  label.padding_right=18                \
+  script="$PLUGIN_DIR/clock.sh" 
+
+sketchybar --update
+echo "sketchybar configuration loaded.."
