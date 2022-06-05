@@ -15,8 +15,11 @@ Dotfiles for MacOS
 
 ### TODO
 - [ ] Create bootstrap script
-- [ ] Upload better screenshots
+- [ ] Upload better-*ish* screenshots
+- [ ] Fix SketchyBar network plugin
 
 Managed using [yadm](https://github.com/TheLocehiliosan/yadm)
 
-### Screenshot
+### Screenshots
+<img src=".screenshots/Screen Shot 2022-05-23 at 1.57.51 AM.png">
+<img src=".screenshots/Screen Shot 2022-04-24 at 3.48.18 PM.png">
