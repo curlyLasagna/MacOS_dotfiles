@@ -1,0 +1,173 @@
+{
+  /* #region Vim  */
+  "vim.leader": "<space>",
+  "vim.foldfix": true,
+  "vim.useSystemClipboard": true,
+  "vim.surround": true,
+  "vim.smartRelativeLine": true,
+  "editor.lineNumbers": "relative",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "v"
+      ],
+      "commands": [
+        "workbench.action.splitEditorInGroup",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.splitEditorOrthogonal",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.files.save",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "commands": [
+        ":q"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "n"
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility"
+      ]
+    },
+    {
+      "before": [
+        "<Tab>"
+      ],
+      "commands": [
+        "workbench.action.nextEditorInGroup"
+      ]
+    },
+    {
+      "before": [
+        "<S-Tab>"
+      ],
+      "commands": [
+        "workbench.action.previousEditorInGroup"
+      ]
+    }
+  ],
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-a>"
+      ],
+      "commands": [
+        "cursorHome"
+      ]
+    },
+    {
+      "before": [
+        "<C-e>"
+      ],
+      "commands": [
+        "cursorEnd"
+      ]
+    },
+  ],
+  /* #endregion */
+  /* #region Term  */
+  "terminal.explorerKind": "external",
+  "terminal.external.osxExec": "alacritty.app",
+  "terminal.external.linuxExec": "alacritty",
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "terminal.integrated.splitCwd": "workspaceRoot",
+  /* #endregion */
+  /* #region Editor  */
+  "editor.fontFamily": "Hack Nerd Font",
+  "editor.suggestSelection": "first",
+  "editor.wordWrap": "on",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.defaultFormatter": "vscodevim.vim",
+  "editor.fontSize": 13,
+  "editor.selectionHighlight": false,
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.tabCompletion": "onlySnippets",
+  "editor.wordBasedSuggestions": false,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "editor.smoothScrolling": true,
+  /* #endregion */
+  "zenMode.fullScreen": false,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "java.semanticHighlighting.enabled": true,
+  "sync.gist": "59203f673cfbe015581bb42bd67049f7",
+  "workbench.startupEditor": "newUntitledFile",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotVerifyTags": true,
+  "explorer.confirmDragAndDrop": false,
+  "window.autoDetectColorScheme": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "telemetry.telemetryLevel": "off",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  },
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      80
+    ],
+  },
+  "editor.accessibilitySupport": "off",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  /* https://github.com/Haruno19/dotfiles/tree/main/MacOS/Minimal%20Green */
+  "extensions.ignoreRecommendations": true,
+  "editor.fontLigatures": true,
+  "customizeUI.stylesheet": {
+    ".tabs-container ": "padding-top:7px; padding-left:2px; padding-bottom:5px",
+    ".tabs-container > .tab": "border-radius: 7px 7px 7px 7px; height: 20px; margin-left: 5px; padding-right:4px",
+    ".monaco-editor .suggest-widget": "border-radius: 10px 10px 10px 10px; overflow:hidden;"
+  },
+  "workbench.colorCustomizations": {
+    "editor.background": "#1a1a1a",
+    "tab.activeBackground": "#0f0f0f",
+    "tab.inactiveBackground": "#1a1a1a",
+    "sideBar.background": "#0f0f0f",
+    "sideBarSectionHeader.background": "#0f0f0f",
+    "activityBar.background": "#0f0f0f",
+    "statusBar.background": "#0f0f0f",
+    "scrollbarSlider.activeBackground": "#0f0f0f"
+  },
+  "workbench.list.smoothScrolling": true,
+  "customizeUI.activityBar": "bottom",
+  "customizeUI.titleBar": "inline",
+  "window.titleBarStyle": "native",
+}

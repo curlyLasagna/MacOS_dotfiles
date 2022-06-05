@@ -11,9 +11,7 @@ abbr -a del_tm_snapshot tmutil listlocalsnapshotdates | awk '{ if (NR>1) {system
 abbr -a ls "exa"
 abbr -a lsi "exa --icons"
 
-
 # PATH
-fish_add_path ~/.local/dev/flutter
 fish_add_path /opt/homebrew/bin/
 fish_add_path ~/.local/bin/
 fish_add_path ~/.ghcup/bin/

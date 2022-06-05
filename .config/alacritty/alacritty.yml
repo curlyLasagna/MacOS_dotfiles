@@ -14,14 +14,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-env:
+# env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: alacritty
+  # TERM: alacritty
 
 window:
   # Window padding (changes require restart)
@@ -29,8 +29,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 0
-    y: 0
+    x: 5
+    y: 5
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -47,7 +47,7 @@ window:
   decorations: buttonless
 
   # Window title
-  title: Zen
+  # title: Alacritty
   # Allow terminal applications to change Alacritty's window title.
   #dynamic_title: true
 #scrolling:
@@ -113,13 +113,6 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
-
-# Colors (Tomorrow Night)
-#colors:
-  # Default colors
-  #primary:
-  #  background: '#1d1f21'
-  #  foreground: '#c5c8c6'
 
     # Bright and dim foreground colors
     #
@@ -205,41 +198,38 @@ font:
   #  text: CellBackground
   #  background: CellForeground
 
+# Colors (PaperColor - Dark)
+colors:
+  # Default colors
+  primary:
+    background: '0x1c1c1c'
+    foreground: '0x808080'
+
+  cursor:
+    text: '0x1c1c1c'
+    cursor: '0x808080'
+
   # Normal colors
-  #normal:
-  #  black:   '#1d1f21'
-  #  red:     '#cc6666'
-  #  green:   '#b5bd68'
-  #  yellow:  '#f0c674'
-  #  blue:    '#81a2be'
-  #  magenta: '#b294bb'
-  #  cyan:    '#8abeb7'
-  #  white:   '#c5c8c6'
+  normal:
+    black:   '0x1c1c1c'
+    red:     '0xaf005f'
+    green:   '0x5faf00'
+    yellow:  '0xd7af5f'
+    blue:    '0x5fafd7'
+    magenta: '0x808080'
+    cyan:    '0xd7875f'
+    white:   '0xd0d0d0'
 
   # Bright colors
-  #bright:
-  #  black:   '#666666'
-  #  red:     '#d54e53'
-  #  green:   '#b9ca4a'
-  #  yellow:  '#e7c547'
-  #  blue:    '#7aa6da'
-  #  magenta: '#c397d8'
-  #  cyan:    '#70c0b1'
-  #  white:   '#eaeaea'
-
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '#131415'
-  #  red:     '#864343'
-  #  green:   '#777c44'
-  #  yellow:  '#9e824c'
-  #  blue:    '#556a7d'
-  #  magenta: '#75617b'
-  #  cyan:    '#5b7d78'
-  #  white:   '#828482'
+  bright:
+    black:   '0x585858'
+    red:     '0x5faf5f'
+    green:   '0xafd700'
+    yellow:  '0xaf87d7'
+    blue:    '0xffaf00'
+    magenta: '0xffaf00'
+    cyan:    '0x00afaf'
+    white:   '0x5f8787'
 
   # Indexed Colors
   #
@@ -755,7 +745,7 @@ key_bindings:
   # - { key: M,              mods: Command,                    action: Minimize              }
   # - { key: Q,              mods: Command,                    action: Quit                  }
   # - { key: W,              mods: Command,                    action: Quit                  }
-  - {key: N, mods: Command, action: CreateNewWindow}
+  - {key: N,                 mods: Command,                    action: CreateNewWindow       }
   # - { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
   # - { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   # - { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }

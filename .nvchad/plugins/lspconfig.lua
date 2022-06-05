@@ -9,7 +9,9 @@ M.setup_lsp = function(attach, capabilities)
     "jdtls",
     "clangd",
     "hls",
-    "texlab"
+    "texlab",
+    "jedi_language_server",
+    "dartls"
   }
 
   for _, lsp in ipairs(servers) do

@@ -1,0 +1,49 @@
+" Misc options
+set selection-clipboard clipboard
+set guioptions none
+set font "Hack Nerd Font Regular 12"
+set zoom-step 7
+set synctex true
+set statusbar-basename true
+set statusbar-home-tilde true
+set n-completion-items 25
+
+"Window title"
+set window-title-page false
+set window-title-basename true
+
+" Scroll
+set scroll-step 25
+set scroll-wrap false
+set scroll-hstep 25
+
+" Toggle mode
+map D toggle_page_mode
+
+" Search
+set incremental-search true
+set search-hadjust true
+
+" Autoadjust
+set adjust-open "width"
+
+" Keymaps
+map u scroll half-up
+map d scroll half-down
+
+" Foreground
+set index-fg                "#D6D6D6"
+set completion-fg           "#D6D6D6"
+
+" Background
+set index-bg                "#141414"
+set index-active-bg         "#D8A33B"
+set statusbar-bg            "#141414"
+set notification-bg         "#141414"
+set completion-bg           "#141414"
+set completion-highlight-bg "#D8A33B"
+
+" Highlight
+set highlight-color         "#53697F"
+set highlight-active-color  "#EC5252"
+

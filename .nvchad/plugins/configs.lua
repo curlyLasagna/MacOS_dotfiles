@@ -7,7 +7,8 @@ M.treesitter = {
       "c",
       "fish",
       "markdown",
-      "make"
+      "make",
+      "dart"
    },
 }
 

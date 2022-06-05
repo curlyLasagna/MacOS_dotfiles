@@ -1,12 +1,17 @@
 # MacOS_dotfiles
 Dotfiles for MacOS
 
-* Terminal: [alacritty](https://github.com/alacritty/alacritty)
-* Shell: [fish](https://github.com/fish-shell/fish-shell)
-* wm: [yabai](https://github.com/koekeishiya/yabai)
-* bar: [SketchyBar](https://github.com/FelixKratz/SketchyBar)
-* editor: [neovim](https://github.com/neovim/neovim) blessed with [nvchad](https://nvchad.github.io/)
-* multiplexer: [tmux]()
+| Category        | App 
+| ---------       | ----
+| terminal        | [alacritty](https://github.com/alacritty/alacritty)            
+| shell           | [fish](https://github.com/fish-shell/fish-shell)               
+| fish pm         | [fisher](https://github.com/jorgebucaran/fisher) 
+| wm              | [Miro](https://github.com/miromannino/miro-windows-manager)  
+| multiplexer     | [tmux](https://github.com/tmux/tmux)
+| tmux pm         | [tpm](https://github.com/tmux-plugins/tpm)
+| terminal editor | [neovim](https://github.com/neovim/neovim) blessed with [nvchad](https://nvchad.github.io/) 
+| gui editor      | [vscode](https://github.com/microsoft/vscode)
+| misc. utils     | [hammerspoon](https://github.com/Hammerspoon/hammerspoon)
 
 ### TODO
 - [ ] Create bootstrap script
@@ -15,4 +20,3 @@ Dotfiles for MacOS
 Managed using [yadm](https://github.com/TheLocehiliosan/yadm)
 
 ### Screenshot
-![](https://iili.io/Xf1jYG.md.png)

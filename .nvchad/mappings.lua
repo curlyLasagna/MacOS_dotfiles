@@ -4,9 +4,6 @@
 -- map('n', '<leader>W', ':w !sudo tee % > /dev/null<CR>')
 -- map('v', '<', '<gv')
 -- map('v', '>', '>gv')
--- map('n', '<A-t>', '<Cmd>ToggleTerm direction=float<CR>')
--- map('n', '<A-x>', '<Cmd>ToggleTerm direction=horizontal<CR>')
--- map('n', '<A-v>', '<Cmd>ToggleTerm direction=vertical<CR>')
 local M = {}
 
 M.custom_maps = {
@@ -15,9 +12,10 @@ M.custom_maps = {
     ["<leader>W"] = { "<cmd> w !sudo tee % > /dev/null<CR>", "Save as sudo" },
   },
 
-  -- v = {
-  --   []
-  -- }
+  v = {
+    ["<"] = { "<gv"},
+    [">"] = { ">gv"}
+  }
 }
 
 return M

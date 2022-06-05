@@ -32,21 +32,27 @@ M.plugins = {
 M.options = {
   user = function ()
     vim.opt.relativenumber = true
+    vim.opt.virtualedit = "all"
+    vim.opt.conceallevel = 1
+    vim.g.tex_conceal='abdmg'
   end,
 }
 
 M.ui = {
   theme = "chadtain",
   theme_toggle = {"chadtain", "rxyhn"},
-  -- changed_themes = {
-  --   chadtain = {
-  --     base_30 = {
-  --       black = ""
-  --     }
-  --   }
-  -- }
+  changed_themes = {
+    rxyhn = {
+      base_16 = {
+        base00 = "#141415"
+      }
+    }
+  },
+  hl_override = {
+    MatchParen = {bg = "cyan"},
+  }
 }
 
--- M.mappings = require "mappings"
+M.mappings = require "custom.mappings"
 
 return M
