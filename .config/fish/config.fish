@@ -8,20 +8,22 @@ abbr -a ibrew /usr/local/bin/brew
 # Delete TimeMachine local snapshots
 abbr -a del_tm_snapshot tmutil listlocalsnapshotdates | awk '{ if (NR>1) {system("tmutil deletelocalsnapshots " $1)}}'
 # exa abbreviations
-abbr -a ls "exa"
+abbr -a ls exa
 abbr -a lsi "exa --icons"
 
 # PATH
 fish_add_path /opt/homebrew/bin/
 fish_add_path ~/.local/bin/
 fish_add_path ~/.ghcup/bin/
+fish_add_path ~/.cargo/bin
+fish_add_path ~/.emacs.d/bin/
 
 # Syntax highlighting
-set fish_color_error red --underline 
+set fish_color_error red --underline
 
 # Colors
 set fish_pager_color_selected_background --background=5A5A5A -d
-set fish_pager_color_selected_prefix 028DB8 
+set fish_pager_color_selected_prefix 028DB8
 set fish_color_command 70B431
 set fish_color_quote 00FFD6
 
@@ -33,12 +35,19 @@ fish_default_key_bindings
 
 # Environment variables
 set -xg VISUAL nvim
-# fucking java
-set -xg JAVA_HOME /Users/luis/Library/Java/JavaVirtualMachines/openjdk-16.0.1/Contents/Home
 # Set bat as pager
 set -xg MANPAGER "sh -c 'col -bx | bat -l man -p'"
 # NVM
 set -xg NVM_DIR $HOME/.nvm
+# MacOS SDK
+set -xg SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk
+
+
 
 # Starship prompt
 starship init fish | source
+
+# bun
+set -Ux BUN_INSTALL "/Users/luis/.bun"
+fish_add_path "/Users/luis/.bun/bin"
+

@@ -47,3 +47,5 @@
         "*/.auctex-auto"
         "*/_region_.log"
         "*/_region_.tex"))
+
+(setq doom-themes-treemacs-enable-variable-pitch nil)

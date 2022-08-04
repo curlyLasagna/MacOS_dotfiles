@@ -9,10 +9,19 @@
 ;(package! some-package)
 
 (package! org-modern)
-(package! tree-sitter)
-(package! tree-sitter-langs)
+(package! monkeytype)
+(package! dirvish)
+(package! heaven-and-hell)
+(package! fireplace)
+(when (package! tree-sitter-langs)
+  (package! tree-sitter))
+;; (package! tree-sitter-langs)
 (unpin! org-roam)
 (package! org-roam-ui)
+(package! obvious
+  :recipe (:host github :repo "alphapapa/obvious.el"))
+(package! yaml-mode
+  :recipe (:host github :repo "yoshiki/yaml-mode"))
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/raxod502/straight.el#the-recipe-format

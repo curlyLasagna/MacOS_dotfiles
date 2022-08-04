@@ -29,8 +29,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 5
-    y: 5
+    x: 0
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -198,39 +198,34 @@ font:
   #  text: CellBackground
   #  background: CellForeground
 
-# Colors (PaperColor - Dark)
+# Colors (Dracula)
 colors:
   # Default colors
   primary:
-    background: '0x1c1c1c'
-    foreground: '0x808080'
-
-  cursor:
-    text: '0x1c1c1c'
-    cursor: '0x808080'
-
+    background: '0x282a36'
+    foreground: '0xf8f8f2'
+ 
   # Normal colors
   normal:
-    black:   '0x1c1c1c'
-    red:     '0xaf005f'
-    green:   '0x5faf00'
-    yellow:  '0xd7af5f'
-    blue:    '0x5fafd7'
-    magenta: '0x808080'
-    cyan:    '0xd7875f'
-    white:   '0xd0d0d0'
-
+    black:   '0x000000'
+    red:     '0xff5555'
+    green:   '0x50fa7b'
+    yellow:  '0xf1fa8c'
+    blue:    '0xbd93f9'
+    magenta: '0xff79c6'
+    cyan:    '0x8be9fd'
+    white:   '0xbbbbbb'
+ 
   # Bright colors
   bright:
-    black:   '0x585858'
-    red:     '0x5faf5f'
-    green:   '0xafd700'
-    yellow:  '0xaf87d7'
-    blue:    '0xffaf00'
-    magenta: '0xffaf00'
-    cyan:    '0x00afaf'
-    white:   '0x5f8787'
-
+    black:   '0x555555'
+    red:     '0xff5555'
+    green:   '0x50fa7b'
+    yellow:  '0xf1fa8c'
+    blue:    '0xcaa9fa'
+    magenta: '0xff79c6'
+    cyan:    '0x8be9fd'
+    white:   '0xffffff'
   # Indexed Colors
   #
   # The indexed colors include all colors from 16 to 256.

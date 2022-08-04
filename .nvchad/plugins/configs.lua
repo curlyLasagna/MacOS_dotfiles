@@ -8,8 +8,13 @@ M.treesitter = {
       "fish",
       "markdown",
       "make",
-      "dart"
+      "dart",
+      "python",
+      "norg",
    },
+   highlight = {
+     enable = true
+   }
 }
 
 M.nvimtree = {

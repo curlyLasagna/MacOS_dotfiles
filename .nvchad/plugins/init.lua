@@ -1,47 +1,50 @@
 return {
-  -- ["karb94/neoscroll.nvim"] = {
-  --   config = function()
-  --     require "neoscroll".setup()
-  --   end,
-  --   setup = function()
-  --    nvchad.packer_lazy_load "neoscroll.nvim"
-  --   end,
-  -- },
-
-  ["lervag/vimtex"] = {
-    -- opt = true,
-    config = function ()
-      vim.g.vimtex_view_method = "skim"
-      vim.g.latex_view_general_viewer = "skim"
-      vim.g.vimtex_compiler_latexmk = {
-        build_dir = '.build'
-      }
-
-      vim.g.vimtex_log_ignore = {
-        "Underfull",
-        "Overfull",
-        "specifier changed to",
-        "Token not allowed in a PDF string",
-      }
-    end,
-    ft = "tex",
-  },
-
-  ["iamcco/markdown-preview.nvim"] = {
-    ft = {'markdown', 'pandon.markdown', 'rmd'},
-    run = 'cd app && yarn install',
-    cmd = 'MarkdownPreview',
-  },
-
-  ["goolord/alpha-nvim"] = {
-    disable = false,
-  },
-
-  ["luukvbaal/stabilize.nvim"] = {
+  ["neovim/nvim-lspconfig"] = {
     config = function()
-      require "stabilize".setup()
-    end,
+      require = "plugins.configs.lspconfig"
+    end
   },
 
-  ["tpope/vim-fugitive"] = {}
+   ["goolord/alpha-nvim"] = {
+      disable = false,
+   },
+
+   ["jose-elias-alvarez/null-ls.nvim"] = {
+      after = "nvim-lspconfig",
+      config = function()
+         require "custom.plugins.null-ls"
+      end,
+   },
+
+   ["luukvbaal/stabilize.nvim"] = {
+      config = function()
+         require("stabilize").setup()
+      end,
+   },
+
+   ["tpope/vim-fugitive"] = {},
+   ["junegunn/vim-easy-align"] = {},
+   ["nvim-treesitter/nvim-treesitter-context"] = {
+      after = "nvim-treesitter",
+   },
+
+   ["matbme/JABS.nvim"] = {
+      cmd = "JABSOpen",
+      config = function()
+         require("config.jabs").setup {
+            position = "center",
+            width = 50,
+            height = 10,
+            border = "rounded",
+            preview_position = "top",
+            preview = {
+               width = 80,
+               height = 20,
+               border = "rounded",
+            },
+         }
+      end,
+   },
+
+   ["Pocco81/TrueZen.nvim"] = {},
 }
