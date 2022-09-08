@@ -17,6 +17,7 @@ fish_add_path ~/.local/bin/
 fish_add_path ~/.ghcup/bin/
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.emacs.d/bin/
+fish_add_path /Applications/Emacs.app/Contents/MacOS 
 
 # Syntax highlighting
 set fish_color_error red --underline
@@ -34,7 +35,7 @@ fish_default_key_bindings
 # set fish_cursor_replace_one underscore
 
 # Environment variables
-set -xg VISUAL nvim
+set -xg VISUAL hx
 # Set bat as pager
 set -xg MANPAGER "sh -c 'col -bx | bat -l man -p'"
 # NVM
@@ -42,12 +43,12 @@ set -xg NVM_DIR $HOME/.nvm
 # MacOS SDK
 set -xg SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk
 
-
-
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
 # Starship prompt
 starship init fish | source
-
 # bun
 set -Ux BUN_INSTALL "/Users/luis/.bun"
 fish_add_path "/Users/luis/.bun/bin"
 
+
+thefuck --alias | source

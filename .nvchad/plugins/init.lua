@@ -5,46 +5,40 @@ return {
     end
   },
 
-   ["goolord/alpha-nvim"] = {
-      disable = false,
-   },
+  ["goolord/alpha-nvim"] = {
+    disable = false,
+  },
 
-   ["jose-elias-alvarez/null-ls.nvim"] = {
-      after = "nvim-lspconfig",
-      config = function()
-         require "custom.plugins.null-ls"
-      end,
-   },
+  ["jose-elias-alvarez/null-ls.nvim"] = {
+    after = "nvim-lspconfig",
+    config = function()
+      require "custom.plugins.null-ls"
+    end,
+  },
 
-   ["luukvbaal/stabilize.nvim"] = {
-      config = function()
-         require("stabilize").setup()
-      end,
-   },
+  ["tpope/vim-fugitive"] = {},
+  ["junegunn/vim-easy-align"] = {},
+  ["nvim-treesitter/nvim-treesitter-context"] = {
+    after = "nvim-treesitter",
+  },
 
-   ["tpope/vim-fugitive"] = {},
-   ["junegunn/vim-easy-align"] = {},
-   ["nvim-treesitter/nvim-treesitter-context"] = {
-      after = "nvim-treesitter",
-   },
+  ["matbme/JABS.nvim"] = {
+    cmd = "JABSOpen",
+    config = function()
+      require("config.jabs").setup {
+        position = "center",
+        width = 50,
+        height = 10,
+        border = "rounded",
+        preview_position = "top",
+        preview = {
+          width = 80,
+          height = 20,
+          border = "rounded",
+        },
+      }
+    end,
+  },
 
-   ["matbme/JABS.nvim"] = {
-      cmd = "JABSOpen",
-      config = function()
-         require("config.jabs").setup {
-            position = "center",
-            width = 50,
-            height = 10,
-            border = "rounded",
-            preview_position = "top",
-            preview = {
-               width = 80,
-               height = 20,
-               border = "rounded",
-            },
-         }
-      end,
-   },
-
-   ["Pocco81/TrueZen.nvim"] = {},
+  ["Pocco81/TrueZen.nvim"] = {},
 }

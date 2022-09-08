@@ -21,7 +21,8 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       company           ; the ultimate code completion backend
+       (company           ; the ultimate code completion backend
+        +childframe)
 
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
@@ -29,7 +30,8 @@
        ;;  +fuzzy
        ;;  +icons)
        (vertico
-        +icons)            ; the search engine of the future
+        +icons
+        +childframe)            ; the search engine of the future
 
        :ui
        deft              ; notational velocity for Emacs
@@ -40,7 +42,7 @@
         +unicode)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
-       ;; indent-guides     ; highlighted indent columns
+       ;;indent-guides     ; highlighted indent columns
        ligatures         ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
@@ -50,9 +52,9 @@
        (popup
         +all
         +defaults)       ; tame sudden yet inevitable temporary windows
-       ;; tabs              ; a tab bar for Emacs
-       ;; (treemacs
-        ;; +lsp)          ; a project drawer, like neotree but cooler
+       ;;tabs            ; a tab bar for Emacs
+       ;;(treemacs
+       ;;+lsp)          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
@@ -70,7 +72,7 @@
        ;;lispy             ; vim for lisp, for people who don't like vim
        multiple-cursors  ; editing in many places at once
        ;;objed             ; text object editing for the innocent
-       ;; parinfer          ; turn lisp into python, sort of
+       ;;parinfer          ; turn lisp into python, sort of
        ;;rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
        word-wrap         ; soft wrapping with language-aware indent
@@ -92,12 +94,12 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       (spell +flyspell) ; tasing you for misspelling mispelling
+       (spell +aspell) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
        ;;ansible
-       ;;biblio            ; Writes a PhD for you (citation needed)
+       biblio            ; Writes a PhD for you (citation needed)
        (debugger
         +lsp)              ; FIXME stepping through code, to help you add bugs
        ;;direnv
@@ -135,7 +137,7 @@
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
-       ;;data              ; config/data formats
+       data              ; config/data formats
        (dart
         +flutter
         +lsp)              ; paint ui and not much else
@@ -150,7 +152,7 @@
        ;;fortran           ; in FORTRAN, GOD is REAL (unless declared INTEGER)
        ;;fsharp            ; ML stands for Microsoft's Language
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
-       ;;gdscript          ; the language you waited for
+
        ;;(go +lsp)         ; the hipster dialect
        ;;(graphql +lsp)    ; Give queries a REST
        (haskell
@@ -159,9 +161,11 @@
        ;;idris             ; a language you can depend on
        ;;json              ; At least it ain't XML
        (java
-        +lsp)       ; the poster child for carpal tunnel syndrome
+        +lsp
+        +treesitter)       ; the poster child for carpal tunnel syndrome
        (javascript
-        +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
+        +lsp
+        +treesitter)        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        (latex
@@ -180,6 +184,7 @@
         +pretty
         +gnuplot
         +hugo
+        +brain
         +journal)           ; organize your plain life in plain text
 
        ;;php               ; perl's insecure younger brother

@@ -2,6 +2,7 @@
   // Vim
   "vim.leader": "<space>",
   "vim.foldfix": true,
+  "vim.easymotion": true,
   "vim.useSystemClipboard": true,
   "vim.surround": true,
   "vim.smartRelativeLine": true,
@@ -9,133 +10,81 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
-        "<leader>",
-        "w",
-        "v"
+        "<space>"
       ],
       "commands": [
-        "workbench.action.splitEditorInGroup"
+        "vspacecode.space"
       ]
     },
     {
       "before": [
-        "<leader>",
-        "w",
-        "s"
+        ","
       ],
       "commands": [
-        "workbench.action.splitEditorOrthogonal"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "w",
-        "c"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "w",
-        "h"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "w",
-        "j"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "w",
-        "k"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "w",
-        "l"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "f",
-        "s"
-      ],
-      "commands": [
-        "workbench.action.files.save"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "q"
-      ],
-      "commands": [
-        ":q"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "o",
-        "p"
-      ],
-      "commands": [
-        "workbench.action.toggleSidebarVisibility"
-      ]
-    },
-    {
-      "before": [
-        "<Tab>"
-      ],
-      "after": [
-        "<%>"
+        "vspacecode.space",
+        {
+          "command": "whichkey.triggerKey",
+          "args": "m"
+        }
       ]
     }
   ],
   "vim.insertModeKeyBindingsNonRecursive": [
-    { "before": [ "<C-a>" ],
-      "commands": [ "cursorHome" ] },
-    { "before": [ "<C-e>" ],
-      "commands": [ "cursorEnd" ] }
+    {
+      "before": [
+        "<C-a>"
+      ],
+      "commands": [
+        "cursorHome"
+      ]
+    },
+    {
+      "before": [
+        "<C-e>"
+      ],
+      "commands": [
+        "cursorEnd"
+      ]
+    }
   ],
-
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<space>"
+      ],
+      "commands": [
+        "vspacecode.space"
+      ]
+    },
+    {
+      "before": [
+        ","
+      ],
+      "commands": [
+        "vspacecode.space",
+        {
+          "command": "whichkey.triggerKey",
+          "args": "m"
+        }
+      ]
+    }
+  ],
   // Terminal
   "terminal.explorerKind": "external",
-  "terminal.external.osxExec": "alacritty.app",
+  "terminal.external.osxExec": "Terminal.app",
   "terminal.external.linuxExec": "alacritty",
   "terminal.integrated.cwd": "${workspaceFolder}",
   "terminal.integrated.splitCwd": "workspaceRoot",
-
+  "terminal.external.windowsExec": "C:\\Users\\lgascon1\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\wt.exe",
+  "terminal.integrated.fontSize": 12,
   // Editor 
-  "editor.fontFamily": "Hack Nerd Font",
+  "editor.fontFamily": "'Hack Nerd Font Mono', 'Hack NF'",
+  "editor.fontLigatures": true,
   "editor.suggestSelection": "first",
   "editor.wordWrap": "on",
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.defaultFormatter": "vscodevim.vim",
-  "editor.fontSize": 13,
+  "editor.fontSize": 12,
   "editor.selectionHighlight": false,
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   "editor.tabCompletion": "onlySnippets",
@@ -182,25 +131,8 @@
     "**/.factorypath": true
   },
   "markdown-pdf.headerTemplate": "<div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \"> <span class='date'></span></div>",
-  /* https://github.com/Haruno19/dotfiles/tree/main/MacOS/Minimal%20Green */
-  "extensions.ignoreRecommendations": true,
-  "editor.fontLigatures": true,
-  "customizeUI.stylesheet": {
-    ".tabs-container ": "padding-top:7px; padding-left:2px; padding-bottom:5px",
-    ".tabs-container > .tab": "border-radius: 7px 7px 7px 7px; height: 20px; margin-left: 5px; padding-right:4px",
-    ".monaco-editor .suggest-widget": "border-radius: 10px 10px 10px 10px; overflow:hidden;"
-  },
-
-  // UI
-  "workbench.colorCustomizations": {
-    "editor.background": "#1a1a1a",
-    "tab.activeBackground": "#0f0f0f",
-    "tab.inactiveBackground": "#1a1a1a",
-    "sideBar.background": "#0f0f0f",
-    "sideBarSectionHeader.background": "#0f0f0f",
-    "activityBar.background": "#0f0f0f",
-    "statusBar.background": "#0f0f0f",
-    "scrollbarSlider.activeBackground": "#0f0f0f"
+  "yaml.schemas": {
+    "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
   },
   "workbench.list.smoothScrolling": true,
   "customizeUI.activityBar": "bottom",
@@ -209,8 +141,13 @@
   "window.autoDetectHighContrast": false,
   "emmet.excludeLanguages": [],
   "workbench.layoutControl.enabled": false,
-  "workbench.colorTheme": "doom-one",
   "window.titleBarStyle": "custom",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "workbench.activityBar.visible": false,
+  "redhat.telemetry.enabled": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.preferredHighContrastLightColorTheme": "Ra Spring",
+  "workbench.preferredLightColorTheme": "Ra Spring",
+  "window.autoDetectColorScheme": true,
+  "workbench.colorTheme": "Ra Spring",
 }

@@ -3,8 +3,8 @@ add_newline = true
 scan_timeout = 10
 
 format = """
-[┌](fg:#fff1cf)$username$directory$git_branch $all$fill$git_status$git_commit $shell$character
-[└─>](fg:#fff1cf) """
+[┌]()$username$directory$git_branch $all$fill$git_status$git_commit $shell$character
+[└─>]() """
 
 [line_break]
 disabled = true
@@ -30,7 +30,7 @@ style = "dimmed"
 disabled = false
 
 [directory]
-format = "[$path ](fg:#fff1cf)"
+format = "[$path ]()"
 truncation_symbol = "…/"
 truncate_to_repo = true
 truncation_length = 50
@@ -44,6 +44,6 @@ staged = '[++\($count\)](green)'
 symbol = "💩 "
 
 [username]
-format = "[   ](fg:#fff1cf bold)"
+format = "[   ]()"
 show_always = true
 disabled = false
