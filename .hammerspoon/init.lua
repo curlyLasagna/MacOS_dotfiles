@@ -1,6 +1,6 @@
 -- hs.loadSpoon("DeepLTranslate")
 -- Hold: Ctrl Key press: Esc
-hs.loadSpoon("ControlEscape"):start()
+-- hs.loadSpoon("ControlEscape"):start()
 hs.loadSpoon("MiroWindowsManager")
 hs.loadSpoon("RecursiveBinder")
 -- Easy move/resize windows with mouse

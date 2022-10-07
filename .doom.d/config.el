@@ -6,12 +6,14 @@
 (setq user-full-name "Luis Dale Gascon"
       user-mail-address "luis.gcodes@gmail.com")
 
-(setq doom-font (font-spec :family "Hack Nerd Font" :size 12 :height 1.0)
+(setq doom-font (font-spec :family "Hack Nerd Font" :size 12)
       ;; doom-big-font (font-spec :family "ETBembo" :size 20)
-      doom-serif-font (font-spec :family "Input Serif" :size 15)
+      doom-serif-font (font-spec :family "Input Serif" :size 13)
       doom-unicode-font (font-spec :family "JuliaMono")
-      doom-variable-pitch-font (font-spec :family "Alegreya" :size 15))
+      doom-variable-pitch-font (font-spec :family "ETBembo" :size 13 :height 1.0))
 
+(setq mixed-pitch-set-height t)
+(set-face-attribute 'variable-pitch nil :height 1.1)
 ;; UI
 (setq
  ;; (Optional) Project / Buffer titlebar
@@ -28,8 +30,8 @@
       (unless (string= "-" project-name)
         (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name)))))
 
- ;; Misc. UI changes.
- doom-theme 'doom-badger
+ ;; Misc. config
+ doom-theme 'doom-snazzy
  emojify-emoji-set "twemoji-v2"
  display-line-numbers-type 'relative
  truncate-string-ellipsis "…"
@@ -39,23 +41,25 @@
  pop-up-windows nil
  +format-on-save-enabled-modes t
  )
+
 (setf dired-kill-when-opening-new-dired-buffer t)
 (setq-default fill-column 90)
-
+;; https://github.com/doomemacs/doomemacs/issues/6580
+;; Allow which key to show everything
+(setq which-key-allow-imprecise-window-fit nil)
 (cond (IS-MAC
        ;; Transparent titlebar.
        (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
        (add-to-list 'default-frame-alist '(ns-appearance . dark))
        ;; I don't think this works
-       (setq mac-right-option-modifier 'alt)
+       (setq mac-right-option-modifier 'meta)
        (setq +latex-viewers '(skim))))
 
 ;; Zen mode
-(setq +zen-text-scale 1.2)
-
+(setq +zen-text-scale 1.0)
 ;; Enabled modes
 ;; Overwrites selected text when pasting
-(delete-selection-mode 1)
+;;(delete-selection-mode 1)
 ;; Scroll up and down vertico candidates
 (vertico-mouse-mode 1)
 
@@ -82,13 +86,12 @@
   (set-face-attribute 'variable-pitch nil :height 2.0))
 
 (after! heaven-and-hell
-  (setq
-   ;; Toggle light/dark theme
+  (setq   ;; Toggle light/dark theme
    heaven-and-hell-load-theme-no-confirm t
    heaven-and-hell-theme-type 'dark
    heaven-and-hell-themes
    '((light . modus-operandi)
-     (dark . doom-horizon))))
+     (dark . doom-snazzy))))
 
 ;; NeoTree
 (after! neotree
@@ -98,6 +101,26 @@
 
 (after! text-mode
   (set-company-backend! 'company-ispell nil))
+
+(with-eval-after-load 'ox-latex
+(add-to-list 'org-latex-classes
+             '("org-plain-latex"
+               "\\documentclass{article}
+           [NO-DEFAULT-PACKAGES]
+           [PACKAGES]
+           [EXTRA]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+(setq citar-symbols
+      `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . " ")
+        (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . " ")
+        (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . " ")))
+(setq citar-symbol-separator "  ")
+
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -132,16 +155,12 @@
 ;; they are implemented.
 
 (after! lsp-ui
-  (setq lsp-ui-sideline-enable t
-        lsp-ui-sideline-show-code-actions t
-        lsp-ui-sideline-show-diagnostics t
-        lsp-ui-sideline-show-hover nil
-        lsp-log-io nil
+  (setq lsp-log-io nil
         lsp-lens-enable t ; not working properly with ccls!
         lsp-diagnostics-provider :auto
         lsp-enable-symbol-highlighting t
         lsp-headerline-breadcrumb-enable nil
-        lsp-headerline-breadcrumb-segments '(symbols)))
+        ))
 
 (after! dap-mode
   (setq dap-python-debugger 'debugpy))
@@ -155,7 +174,10 @@
 
 ;; Pretty info
 (add-hook 'Info-selection-hook
-          'info-colors-fontify-node)
+          #'info-colors-fontify-node)
+
+(add-hook 'prog-mode-hook
+          #'word-wrap-mode)
 
 (remove-hook! 'text-mode-hook
   #'display-line-numbers-mode
@@ -172,8 +194,9 @@
 (load! "+org")
 (load! "+deft")
 (load! "+company.el")
+(load! "+org-roam.el")
 
-t; Emacs plus specific
+;; Emacs plus specific
 ;; (defun my/apply-theme (appearance)
 ;;   "Load theme, taking current system APPEARANCE into consideration."
 ;;   (mapc #'disable-theme custom-enabled-themes)

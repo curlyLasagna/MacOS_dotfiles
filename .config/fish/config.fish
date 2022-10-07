@@ -18,6 +18,7 @@ fish_add_path ~/.ghcup/bin/
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.emacs.d/bin/
 fish_add_path /Applications/Emacs.app/Contents/MacOS 
+fish_add_path ~/Library/Python/3.10/bin
 
 # Syntax highlighting
 set fish_color_error red --underline

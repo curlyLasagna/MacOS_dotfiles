@@ -26,6 +26,7 @@ commit_hash_length = 4
 [shell]
 fish_indicator = "Fish"
 zsh_indicator = "Zsh"
+nu_indicator = "ﬦ Nu"
 style = "dimmed"
 disabled = false
 

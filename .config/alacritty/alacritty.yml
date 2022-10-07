@@ -179,32 +179,36 @@ font:
 
 # Colors (Pencil Dark)
 colors:
-  name: Chalk (dark)
-  author: Chris Kempson
+  # Default colors
   primary:
-    background: "#151515"
-    foreground: "#d0d0d0"
-  cursor:
-    text: "#151515"
-    cursor: "#d0d0d0"
+    background: '0x24292e'
+    foreground: '0xd1d5da'
+
+  # Normal colors
   normal:
-    black: "#151515"
-    red: "#fb9fb1"
-    green: "#acc267"
-    yellow: "#ddb26f"
-    blue: "#6fc2ef"
-    magenta: "#e1a3ee"
-    cyan: "#12cfc0"
-    white: "#d0d0d0"
+    black: '0x24292e'
+    red: '0xf14c4c'
+    green: '0x23d18b'
+    yellow: '0xe2e210'
+    blue: '0x3b8eea'
+    magenta: '0xbc3fbc'
+    cyan: '0x29b7da'
+    white: '0xd1d5da'
+
+  # Bright colors
   bright:
-    black: "#505050"
-    red: "#fb9fb1"
-    green: "#acc267"
-    yellow: "#ddb26f"
-    blue: "#6fc2ef"
-    magenta: "#e1a3ee"
-    cyan: "#12cfc0"
-    white: "#f5f5f5"
+    black: '0x666666'
+    red: '0xf14c4c'
+    green: '0x23d18b'
+    yellow: '0xf5f543'
+    blue: '0x3b8eea'
+    magenta: '0xd670d6'
+    cyan: '0x29b7da'
+    white: '0xd1d5da'
+
+  indexed_colors:
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xf14c4c' }
 
 # Live config reload (changes require restart)
 live_config_reload: true
@@ -704,4 +708,4 @@ key_bindings:
   #print_events: false
   # Highlight window damage information.
   #highlight_damage: false
-theme: Chalk.dark
+theme: github_dark

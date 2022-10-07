@@ -23,15 +23,13 @@
        :completion
        (company           ; the ultimate code completion backend
         +childframe)
-
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;; (ivy               ; a search engine for love and life
        ;;  +fuzzy
        ;;  +icons)
        (vertico
-        +icons
-        +childframe)            ; the search engine of the future
+        +icons)            ; the search engine of the future
 
        :ui
        deft              ; notational velocity for Emacs
@@ -110,7 +108,8 @@
         +overlay)          ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
        lookup              ; navigate your code and its documentation
-       (lsp               ; M-x vscode
+       (lsp                ; M-x vscode
+        +eglot
         +peek)
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
@@ -119,6 +118,7 @@
        ;;prodigy           ; FIXME managing external services & code builders
        rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
+       tree-sitter
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
@@ -138,9 +138,9 @@
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
-       (dart
-        +flutter
-        +lsp)              ; paint ui and not much else
+       ;; (dart
+       ;;  +flutter
+       ;;  +lsp)              ; paint ui and not much else
        ;;dhall
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
@@ -155,8 +155,8 @@
 
        ;;(go +lsp)         ; the hipster dialect
        ;;(graphql +lsp)    ; Give queries a REST
-       (haskell
-        +lsp)    ; a language that's lazier than I am
+       ;; (haskell
+       ;;  +lsp)    ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        ;;json              ; At least it ain't XML
@@ -173,7 +173,7 @@
         +latexmk)             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ledger            ; be audit you can be
-       (lua)               ; one-based indices? one-based indices
+       (lua +lsp)              ; one-based indices? one-based indices
        markdown            ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
@@ -190,9 +190,11 @@
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python +lsp)            ; beautiful is better than ugly
+       (python
+        +lsp
+        +pyright)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
-       ;;racket            ; a DSL for DSLs
+       ;;racket ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
@@ -200,13 +202,17 @@
        ;; rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
-       sh                ; she sells {ba,z,fi}sh shells on the C xor
+       (sh                ; she sells {ba,z,fi}sh shells on the C xor
+        +fish
+        +lsp
+        +tree-sitter)
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        (web
-        +lsp)               ; the tubes
+        +lsp
+        +tree-sitter)               ; the tubes
        ;;yaml              ; JSON, but readable
        ;;zig               ; C, but simpler
 
@@ -225,5 +231,5 @@
 
        :config
        ;;literate
-       (default +bindings +smartparens)
-       (delete-selection-mode 1))
+       (default +bindings +smartparens))
+       ;;(delete-selection-mode 1))

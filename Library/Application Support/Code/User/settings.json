@@ -149,5 +149,19 @@
   "workbench.preferredHighContrastLightColorTheme": "Ra Spring",
   "workbench.preferredLightColorTheme": "Ra Spring",
   "window.autoDetectColorScheme": true,
-  "workbench.colorTheme": "Ra Spring",
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop"
+  },
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
 }
