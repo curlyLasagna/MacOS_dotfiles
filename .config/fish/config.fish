@@ -51,5 +51,4 @@ starship init fish | source
 set -Ux BUN_INSTALL "/Users/luis/.bun"
 fish_add_path "/Users/luis/.bun/bin"
 
-
 thefuck --alias | source

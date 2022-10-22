@@ -1,9 +1,11 @@
 ;;; +company.el -*- lexical-binding: t; -*-
 (after! company
-  (setq company-idle-delay .1
-        company-minimum-prefix-length 2
+  (setq company-idle-delay .5
+        company-minimum-prefix-length 3
         company-selection-wrap-around t
-        company-ispell-available nil))
+        company-ispell-available nil
+        company-tooltip-limit 5
+        company-tooltip-minimum 3))
 
 (setq company-show-quick-access t)
 

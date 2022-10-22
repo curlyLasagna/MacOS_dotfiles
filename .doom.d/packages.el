@@ -13,16 +13,15 @@
 (package! org-super-agenda)
 (package! org-drill)
 (package! org-fragtog)
-(package! color-theme-sanityinc-tomorrow)
 (package! circadian)
 (package! info-colors)
-(package! fireplace)
-(package! websocket)
-(unpin! org-roam)
-(package! org-roam-ui)
+(package! solo-jazz-theme)
 (package! yaml-mode
   :recipe (:host github :repo "yoshiki/yaml-mode"))
 
+(package! websocket)
+(unpin! org-roam)
+(package! org-roam-ui)
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/raxod502/straight.el#the-recipe-format

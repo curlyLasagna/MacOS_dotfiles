@@ -78,7 +78,7 @@
   "terminal.external.windowsExec": "C:\\Users\\lgascon1\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\wt.exe",
   "terminal.integrated.fontSize": 12,
   // Editor 
-  "editor.fontFamily": "'Hack Nerd Font Mono', 'Hack NF'",
+  "editor.fontFamily": "'JetBrains Mono', 'Ubuntu NF'",
   "editor.fontLigatures": true,
   "editor.suggestSelection": "first",
   "editor.wordWrap": "on",
@@ -164,4 +164,6 @@
   "[java]": {
     "editor.defaultFormatter": "redhat.java"
   },
+  "workbench.colorTheme": "Ra Spring",
+
 }

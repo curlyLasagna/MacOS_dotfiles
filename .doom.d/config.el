@@ -6,60 +6,53 @@
 (setq user-full-name "Luis Dale Gascon"
       user-mail-address "luis.gcodes@gmail.com")
 
-(setq doom-font (font-spec :family "Hack Nerd Font" :size 12)
-      ;; doom-big-font (font-spec :family "ETBembo" :size 20)
-      doom-serif-font (font-spec :family "Input Serif" :size 13)
-      doom-unicode-font (font-spec :family "JuliaMono")
-      doom-variable-pitch-font (font-spec :family "ETBembo" :size 13 :height 1.0))
+(setq doom-font (font-spec :family "Fira Code" :size 12)
+      doom-variable-pitch-font (font-spec :family "ETBembo" :size 16 :height 2.0)
+      doom-unicode-font (font-spec :family "Hack Nerd Font")
+      doom-serif-font (font-spec :family "Input Serif" :size 16))
 
-(setq mixed-pitch-set-height t)
-(set-face-attribute 'variable-pitch nil :height 1.1)
 ;; UI
 (setq
- ;; (Optional) Project / Buffer titlebar
- frame-title-format
- '(""
-   (:eval
-    (if (s-contains-p org-roam-directory (or buffer-file-name ""))
-        (replace-regexp-in-string
-         ".*/[0-9]*-?" "☰ "
-         (subst-char-in-string ?_ ?  buffer-file-name))
-      "%b"))
-   (:eval
-    (let ((project-name (projectile-project-name)))
-      (unless (string= "-" project-name)
-        (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name)))))
-
- ;; Misc. config
- doom-theme 'doom-snazzy
+ frame-title-format '("Emacs")
  emojify-emoji-set "twemoji-v2"
+ ;; Alpha line numbers
  display-line-numbers-type 'relative
  truncate-string-ellipsis "…"
- ;; Snippets inside snippets
+ ;; Trigger snippets inside snippets
  yas-triggers-in-field t
  ;; Visiting backlinks should overwrite the current roam window
  pop-up-windows nil
+ ;; Supposed to use current window when editing special
+ org-src-window-setup 'current-window
+ ;; Auto format if possible
  +format-on-save-enabled-modes t
+ visual-fill-column-width nil
+ doom-fallback-buffer-name "► Doom"
+ +doom-dashboard-name "► Doom"
  )
-
+(setq doom-scratch-initial-major-mode 'emacs-lisp-mode)
 (setf dired-kill-when-opening-new-dired-buffer t)
 (setq-default fill-column 90)
 ;; https://github.com/doomemacs/doomemacs/issues/6580
 ;; Allow which key to show everything
 (setq which-key-allow-imprecise-window-fit nil)
+;; Disables spell in check in latex for performance
+(setq-hook! 'LaTex-mode-hook +spellcheck-immediately nil)
+
+(after! evil
+  (setq evil-move-cursor-back nil
+   evil-kill-on-visual-paste nil))
+
 (cond (IS-MAC
        ;; Transparent titlebar.
        (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
        (add-to-list 'default-frame-alist '(ns-appearance . dark))
-       ;; I don't think this works
-       (setq mac-right-option-modifier 'meta)
-       (setq +latex-viewers '(skim))))
+       (setq mac-right-option-modifier 'meta
+             +latex-viewers '(skim))))
 
-;; Zen mode
 (setq +zen-text-scale 1.0)
-;; Enabled modes
-;; Overwrites selected text when pasting
-;;(delete-selection-mode 1)
+(setq writeroom-mode-line t
+      writeroom-bottom-divider-width 0)
 ;; Scroll up and down vertico candidates
 (vertico-mouse-mode 1)
 
@@ -71,7 +64,11 @@
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
   (consult-buffer))
+
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+;; Prevents some cases of Emacs flickering.
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
 (use-package! tree-sitter
   :config
@@ -79,21 +76,21 @@
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
-(use-package! mixed-pitch
-  :hook (org-mode . mixed-pitch-mode)
-  :config
-  (setq mixed-pitch-set-heigth t)
-  (set-face-attribute 'variable-pitch nil :height 2.0))
-
+;; Toggle light/dark theme
 (after! heaven-and-hell
-  (setq   ;; Toggle light/dark theme
+  (setq
    heaven-and-hell-load-theme-no-confirm t
    heaven-and-hell-theme-type 'dark
-   heaven-and-hell-themes
-   '((light . modus-operandi)
-     (dark . doom-snazzy))))
+   heaven-and-hell-themes '((light . modus-operandi)
+                            (dark . doom-snazzy))))
+(after! lsp-mode
+  (setq lsp-enable-symbol-highlighting nil
+        ;; If an LSP server isn't present when I start a prog-mode buffer, you
+        ;; don't need to tell me. I know. On some machines I don't care to have
+        ;; a whole development environment for some ecosystems.
+        lsp-enable-suggest-server-download nil))
 
-;; NeoTree
+;; NeoTree sidebar file explorer
 (after! neotree
   (setq doom-themes-neotree-enable-variable-pitch nil
         doom-themes-neotree-line-spacing 1
@@ -102,25 +99,12 @@
 (after! text-mode
   (set-company-backend! 'company-ispell nil))
 
-(with-eval-after-load 'ox-latex
-(add-to-list 'org-latex-classes
-             '("org-plain-latex"
-               "\\documentclass{article}
-           [NO-DEFAULT-PACKAGES]
-           [PACKAGES]
-           [EXTRA]"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-
+;; Aesthetically better menu when choosing what citation to insert
 (setq citar-symbols
       `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . " ")
         (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . " ")
         (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . " ")))
 (setq citar-symbol-separator "  ")
-
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -162,9 +146,6 @@
         lsp-headerline-breadcrumb-enable nil
         ))
 
-(after! dap-mode
-  (setq dap-python-debugger 'debugpy))
-
 (add-hook 'after-change-major-mode-hook
           #'doom-modeline-conditional-buffer-encoding)
 
@@ -177,14 +158,14 @@
           #'info-colors-fontify-node)
 
 (add-hook 'prog-mode-hook
-          #'word-wrap-mode)
+          #'+word-wrap-mode
+          #'display-line-numbers-mode
+          #'vi-tilde-fringe-mode)
 
 (remove-hook! 'text-mode-hook
-  #'display-line-numbers-mode
   #'vi-tilde-fringe-mode)
 
 ;; (load! "+centaur"
-;; (load! "+treemacs")
 (load! "+which-key")
 (load! "+projectile")
 (load! "+dashboard")
@@ -193,8 +174,8 @@
 (load! "+modeline")
 (load! "+org")
 (load! "+deft")
-(load! "+company.el")
-(load! "+org-roam.el")
+(load! "+company")
+;; (load! "book-mode.el")
 
 ;; Emacs plus specific
 ;; (defun my/apply-theme (appearance)
@@ -203,5 +184,3 @@
 ;;   (pcase appearance
 ;;     ('light (load-theme modus-operandi t))
 ;;     ('dark (load-theme doom-badger t))))
-
-;; (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
