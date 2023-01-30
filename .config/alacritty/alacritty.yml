@@ -61,7 +61,6 @@ font:
     family: Hack Nerd Font
     style: Regular
   size: 12.0
-  use_thin_strokes: true
   # Bold font face
   #bold:
   # Font family

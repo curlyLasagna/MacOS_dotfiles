@@ -28,3 +28,8 @@
  :leader
  :desc "Open today's journal file"
  "n j n" #'org-journal-open-current-journal-file)
+
+(map!
+ :leader
+ :desc "Maximize current pane"
+ "w m" #'user/toggle-maximize-buffer)

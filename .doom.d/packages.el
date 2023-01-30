@@ -6,22 +6,19 @@
 ;; use 'M-x doom/reload'.
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
-;(package! some-package)
+                                        ;(package! some-package)
 
+(package! straight :pin "3eca39d")
 (package! org-modern)
 (package! heaven-and-hell)
-(package! org-super-agenda)
-(package! org-drill)
-(package! org-fragtog)
-(package! circadian)
+(package! sqlup-mode)
 (package! info-colors)
-(package! solo-jazz-theme)
-(package! yaml-mode
-  :recipe (:host github :repo "yoshiki/yaml-mode"))
-
-(package! websocket)
-(unpin! org-roam)
-(package! org-roam-ui)
+(when (package! vterm)
+  (package! multi-vterm))
+(package! catppuccin
+  :recipe (:host github :repo "catppuccin/emacs"))
+(when (package! catppuccin)
+  (package! autothemer))
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/raxod502/straight.el#the-recipe-format
@@ -37,7 +34,7 @@
 
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
-;(package! builtin-package :disable t)
+                                        ;(package! builtin-package :disable t)
 (package! visual-fill-column :disable t)
 ;; You can override the recipe of a built in package without having to specify
 ;; all the properties for `:recipe'. These will inherit the rest of its recipe

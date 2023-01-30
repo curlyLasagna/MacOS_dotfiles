@@ -1,5 +1,5 @@
 -- hs.loadSpoon("DeepLTranslate")
--- Hold: Ctrl Key press: Esc
+-- Hold: Ctrl mod, press: Esc
 -- hs.loadSpoon("ControlEscape"):start()
 hs.loadSpoon("MiroWindowsManager")
 hs.loadSpoon("RecursiveBinder")
@@ -74,9 +74,9 @@ hs.hotkey.bind(win_mods, "n", function()
   moveNextScreenStep()
 end)
 
-hs.hotkey.bind({ "alt" }, "e", function()
-  hs.application.open("Finder.app")
-end)
+-- hs.hotkey.bind({ "alt" }, "e", function()
+--   hs.application.open("Finder.app")
+-- end)
 
 hs.hotkey.bind({ "alt", "cmd" }, "m", function()
   hs.osascript.applescriptFromFile(
@@ -153,7 +153,7 @@ end)
 enhancedMouse:start()
 
 navMouse = hs.eventtap.new({hs.eventtap.event.types.leftMouseDown}, function (e)
- 
+
 end)
 -- Print which mouse button is clicked
 -- https://apple.stackexchange.com/questions/362776/utility-to-identify-what-mouse-buttons-are-being-pressed

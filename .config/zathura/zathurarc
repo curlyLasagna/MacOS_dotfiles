@@ -1,7 +1,7 @@
 " Misc options
 set selection-clipboard clipboard
 set guioptions none
-set font "Hack Nerd Font Regular 12"
+set font "Cousine 12"
 set zoom-step 7
 set synctex true
 set statusbar-basename true
@@ -13,7 +13,7 @@ set window-title-page false
 set window-title-basename true
 
 " Scroll
-set scroll-step 25
+set scroll-step 5
 set scroll-wrap false
 set scroll-hstep 25
 
@@ -28,6 +28,7 @@ set search-hadjust true
 set adjust-open "width"
 
 " Keymaps
+" One hand scroll
 map u scroll half-up
 map d scroll half-down
 

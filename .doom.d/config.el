@@ -3,56 +3,49 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Luis Dale Gascon"
-      user-mail-address "luis.gcodes@gmail.com")
+(setq! user-full-name "Luis Dale Gascon"
+       user-mail-address "luis.gcodes@gmail.com")
 
-(setq doom-font (font-spec :family "Fira Code" :size 12)
-      doom-variable-pitch-font (font-spec :family "ETBembo" :size 16 :height 2.0)
-      doom-unicode-font (font-spec :family "Hack Nerd Font")
-      doom-serif-font (font-spec :family "Input Serif" :size 16))
+(setq! doom-font (font-spec :family "Fira Code" :size 12 :weight 'light)
+       doom-variable-pitch-font (font-spec :family "ETBembo" :size 16 :height 2.0)
+       doom-unicode-font (font-spec :family "Hack Nerd Font" :size 12)
+       doom-serif-font (font-spec :family "Input Serif" :size 12))
 
-;; UI
-(setq
- frame-title-format '("Emacs")
- emojify-emoji-set "twemoji-v2"
- ;; Alpha line numbers
- display-line-numbers-type 'relative
- truncate-string-ellipsis "…"
- ;; Trigger snippets inside snippets
- yas-triggers-in-field t
- ;; Visiting backlinks should overwrite the current roam window
- pop-up-windows nil
- ;; Supposed to use current window when editing special
- org-src-window-setup 'current-window
- ;; Auto format if possible
- +format-on-save-enabled-modes t
- visual-fill-column-width nil
- doom-fallback-buffer-name "► Doom"
- +doom-dashboard-name "► Doom"
- )
+;; Frame
+(setq! frame-title-format '("Emacs | %b"))
+(setq! ns-use-proxy-icon nil)
+;; Emoji appearance
+(setq! emojify-emoji-set "twemoji-v2")
+(setq! display-line-numbers-type 'relative)
+(setq! truncate-string-ellipsis "…")
+;; Trigger snippets inside snippets
+(setq! yas-triggers-in-field t)
+(setq! doom-fallback-buffer-name "► Doom")
+(setq! +doom-dashboard-name "► Doom")
 (setq doom-scratch-initial-major-mode 'emacs-lisp-mode)
 (setf dired-kill-when-opening-new-dired-buffer t)
 (setq-default fill-column 90)
-;; https://github.com/doomemacs/doomemacs/issues/6580
 ;; Allow which key to show everything
+;; https://github.com/doomemacs/doomemacs/issues/6580
 (setq which-key-allow-imprecise-window-fit nil)
 ;; Disables spell in check in latex for performance
 (setq-hook! 'LaTex-mode-hook +spellcheck-immediately nil)
 
 (after! evil
   (setq evil-move-cursor-back nil
-   evil-kill-on-visual-paste nil))
+        evil-kill-on-visual-paste nil))
 
+;; MacOS specific options
 (cond (IS-MAC
        ;; Transparent titlebar.
        (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
        (add-to-list 'default-frame-alist '(ns-appearance . dark))
-       (setq mac-right-option-modifier 'meta
-             +latex-viewers '(skim))))
+       (setq mac-right-option-modifier 'meta)))
 
 (setq +zen-text-scale 1.0)
 (setq writeroom-mode-line t
       writeroom-bottom-divider-width 0)
+
 ;; Scroll up and down vertico candidates
 (vertico-mouse-mode 1)
 
@@ -64,8 +57,6 @@
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
   (consult-buffer))
-
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 ;; Prevents some cases of Emacs flickering.
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
@@ -81,21 +72,63 @@
   (setq
    heaven-and-hell-load-theme-no-confirm t
    heaven-and-hell-theme-type 'dark
-   heaven-and-hell-themes '((light . modus-operandi)
-                            (dark . doom-snazzy))))
+   heaven-and-hell-themes '((light . doom-earl-grey)
+                            (dark . doom-tokyo-night))))
+;; https://emacs.stackexchange.com/questions/55417/change-theme-when-os-dark-mode-changes
+(defun sys/apply-theme (appearance)
+  "Load theme, taking current system APPEARANCE into consideration."
+  (mapc #'disable-theme custom-enabled-themes)
+  (pcase appearance
+    ;; Set light and dark theme
+    ('light (load-theme 'doom-earl-grey t))
+    ('dark (load-theme 'doom-tokyo-night t)))
+  #'doom/reload-theme)
+
+(add-hook 'ns-system-appearance-change-functions #'sys/apply-theme)
+
 (after! lsp-mode
   (setq lsp-enable-symbol-highlighting nil
-        ;; If an LSP server isn't present when I start a prog-mode buffer, you
-        ;; don't need to tell me. I know. On some machines I don't care to have
-        ;; a whole development environment for some ecosystems.
+        ;; Dsiable lsp install suggestion
         lsp-enable-suggest-server-download nil))
 
-;; NeoTree sidebar file explorer
-(after! neotree
-  (setq doom-themes-neotree-enable-variable-pitch nil
-        doom-themes-neotree-line-spacing 1
-        doom-themes-neotree-file-icons t))
+(after! mixed-pitch
+  (setq mixed-pitch-set-height t))
 
+(after! tex
+  (setq +latex-viewers '(pdf-tools skim)))
+
+(setq org-latex-create-formula-image-program 'dvisvgm)
+(after! org
+  (plist-put org-format-latex-options :scale 2.0))
+;; NeoTree config
+;; - Set consistent font
+;; - Use icons
+;; (after! neotree
+;;   (setq doom-themes-neotree-enable-variable-pitch nil
+;;         doom-themes-neotree-line-spacing 1
+;;         doom-themes-neotreefile-icons t))
+
+(use-package! treemacs
+  :config
+  (setq doom-themes-treemacs-enable-variable-pitch nil
+        treemacs-follow-mode t
+        ;;
+        treemacs-sorting 'mod-time-asc
+        ;; Use dired icons as icons
+        doom-themes-treemacs-theme "doom-colors"))
+
+(after! lsp-clangd
+  (setq lsp-clients-clangd-args
+        '("-j=3"
+          "--background-index"
+          "--clang-tidy"
+          "--completion-style=detailed"
+          "--header-insertion=never"
+          "--header-insertion-decorators=0"))
+  (set-lsp-priority! 'clangd 2))
+
+
+;; Disable spelling suggestions for better performance
 (after! text-mode
   (set-company-backend! 'company-ispell nil))
 
@@ -105,6 +138,83 @@
         (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . " ")
         (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . " ")))
 (setq citar-symbol-separator "  ")
+
+;; https://hieuphay.com/doom-emacs-config/
+(use-package! yasnippet
+  :config
+  ;; It will test whether it can expand, if yes, change cursor color
+  (defun hp/change-cursor-color-if-yasnippet-can-fire (&optional field)
+    (interactive)
+    (setq yas--condition-cache-timestamp (current-time))
+    (let (templates-and-pos)
+      (unless (and yas-expand-only-for-last-commands
+                   (not (member last-command yas-expand-only-for-last-commands)))
+        (setq templates-and-pos (if field
+                                    (save-restriction
+                                      (narrow-to-region (yas--field-start field)
+                                                        (yas--field-end field))
+                                      (yas--templates-for-key-at-point))
+                                  (yas--templates-for-key-at-point))))
+      (set-cursor-color (if (and templates-and-pos (first templates-and-pos)
+                                 (eq evil-state 'insert))
+                            (doom-color 'red)
+                          (face-attribute 'default :foreground)))))
+  :hook (post-command . hp/change-cursor-color-if-yasnippet-can-fire))
+
+;; https://gist.github.com/mads-hartmann/3402786?permalink_comment_id=4263171#gistcomment-4263171
+;; Maximize buffer with a toggle
+;; Works nicely with neotree but doesn't hide treemacs at the moment
+(defun user/toggle-maximize-buffer ()
+  "Maximize buffer."
+  (interactive)
+  (save-excursion
+    (if (and (= 1 (length (cl-remove-if
+                           (lambda (w)
+                             (or (and (fboundp 'treemacs-is-treemacs-window?)
+                                      (treemacs-is-treemacs-window? w))
+                                 (and (bound-and-true-p neo-global--window)
+                                      (eq neo-global--window w))))
+                           (window-list))))
+             (assoc ?_ register-alist))
+        (jump-to-register ?_)
+      (window-configuration-to-register ?_)
+      (delete-other-windows))))
+
+;; https://stackoverflow.com/questions/384284/how-do-i-rename-an-open-file-in-emacs
+;; Originally from stevey, adapted to support moving to a new directory.
+(defun user/rename-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive
+   (progn
+     (if (not (buffer-file-name))
+         (error "Buffer '%s' is not visiting a file!" (buffer-name)))
+     ;; Disable ido auto merge since it too frequently jumps back to the original
+     ;; file name if you pause while typing. Reenable with C-z C-z in the prompt.
+     (let ((ido-auto-merge-work-directories-length -1))
+       (list (read-file-name (format "Rename %s to: " (file-name-nondirectory
+                                                       (buffer-file-name))))))))
+  (if (equal new-name "")
+      (error "Aborted rename"))
+  (setq new-name (if (file-directory-p new-name)
+                     (expand-file-name (file-name-nondirectory
+                                        (buffer-file-name))
+                                       new-name)
+                   (expand-file-name new-name)))
+  ;; Only rename if the file was saved before. Update the
+  ;; buffer name and visited file in all cases.
+  (if (file-exists-p (buffer-file-name))
+      (rename-file (buffer-file-name) new-name 1))
+  (let ((was-modified (buffer-modified-p)))
+    ;; This also renames the buffer, and works with uniquify
+    (set-visited-file-name new-name)
+    (if was-modified
+        (save-buffer)
+      ;; Clear buffer-modified flag caused by set-visited-file-name
+      (set-buffer-modified-p nil)))
+
+  (setq default-directory (file-name-directory new-name))
+
+  (message "Renamed to %s." new-name))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -140,7 +250,7 @@
 
 (after! lsp-ui
   (setq lsp-log-io nil
-        lsp-lens-enable t ; not working properly with ccls!
+        lsp-lens-enable t ;; not working properly with ccls!
         lsp-diagnostics-provider :auto
         lsp-enable-symbol-highlighting t
         lsp-headerline-breadcrumb-enable nil
@@ -149,38 +259,28 @@
 (add-hook 'after-change-major-mode-hook
           #'doom-modeline-conditional-buffer-encoding)
 
-;; Let heaven-and-hell load theme
-(add-hook 'after-init-hook
-          'heaven-and-hell-init-hook)
+;; Startup hook
+(add-hook! 'after-init-hook
+          'heaven-and-hell-init-hook
+          'global-goto-address-mode
+          'pixel-scroll-precision-mode
+          'delete-selection-mode)
 
 ;; Pretty info
 (add-hook 'Info-selection-hook
           #'info-colors-fontify-node)
 
-(add-hook 'prog-mode-hook
-          #'+word-wrap-mode
-          #'display-line-numbers-mode
-          #'vi-tilde-fringe-mode)
+(add-hook! '(prog-mode-hook)
+           #'+word-wrap-mode
+           #'display-line-numbers-mode)
 
-(remove-hook! 'text-mode-hook
-  #'vi-tilde-fringe-mode)
+(remove-hook! '(org-mode-hook doom-docs-mode-hook)
+           #'display-line-numbers)
 
-;; (load! "+centaur"
 (load! "+which-key")
 (load! "+projectile")
 (load! "+dashboard")
 (load! "+bindings")
 (load! "+org-modern")
 (load! "+modeline")
-(load! "+org")
-(load! "+deft")
 (load! "+company")
-;; (load! "book-mode.el")
-
-;; Emacs plus specific
-;; (defun my/apply-theme (appearance)
-;;   "Load theme, taking current system APPEARANCE into consideration."
-;;   (mapc #'disable-theme custom-enabled-themes)
-;;   (pcase appearance
-;;     ('light (load-theme modus-operandi t))
-;;     ('dark (load-theme doom-badger t))))

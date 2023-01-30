@@ -1,12 +1,17 @@
 {
+  // VSapceCode
+  // "vspacecode.bindingOverrides": [{
+  //   "keys": "j.[",
+  //   "name": "Go to previous problem",
+  //   "type": "command",
+  //   "command":"workbench."
+  // }],
   // Vim
-  "vim.leader": "<space>",
   "vim.foldfix": true,
   "vim.easymotion": true,
   "vim.useSystemClipboard": true,
   "vim.surround": true,
   "vim.smartRelativeLine": true,
-  "editor.lineNumbers": "relative",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
@@ -32,6 +37,15 @@
   "vim.insertModeKeyBindingsNonRecursive": [
     {
       "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    },
+    {
+      "before": [
         "<C-a>"
       ],
       "commands": [
@@ -45,7 +59,7 @@
       "commands": [
         "cursorEnd"
       ]
-    }
+    },
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
@@ -75,11 +89,13 @@
   "terminal.external.linuxExec": "alacritty",
   "terminal.integrated.cwd": "${workspaceFolder}",
   "terminal.integrated.splitCwd": "workspaceRoot",
+  "terminal.integrated.fontFamily": "'Hack Nerd Font', 'Hack NF'",
   "terminal.external.windowsExec": "C:\\Users\\lgascon1\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\wt.exe",
   "terminal.integrated.fontSize": 12,
   // Editor 
-  "editor.fontFamily": "'JetBrains Mono', 'Ubuntu NF'",
+  "editor.fontFamily": " 'Fira Code', 'JetBrains Mono','Hack NF'",
   "editor.fontLigatures": true,
+  "editor.fontWeight": "250",
   "editor.suggestSelection": "first",
   "editor.wordWrap": "on",
   "editor.acceptSuggestionOnCommitCharacter": false,
@@ -142,12 +158,12 @@
   "emmet.excludeLanguages": [],
   "workbench.layoutControl.enabled": false,
   "window.titleBarStyle": "custom",
-  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
   "workbench.activityBar.visible": false,
   "redhat.telemetry.enabled": false,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.preferredHighContrastLightColorTheme": "Ra Spring",
-  "workbench.preferredLightColorTheme": "Ra Spring",
+  "workbench.preferredLightColorTheme": "Nord Light Brighter",
+  "workbench.preferredDarkColorTheme": "Tokyo Night",
   "window.autoDetectColorScheme": true,
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
@@ -164,6 +180,156 @@
   "[java]": {
     "editor.defaultFormatter": "redhat.java"
   },
-  "workbench.colorTheme": "Ra Spring",
-
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.autoBuild.interval": 2000,
+  "latex-workshop.latex.outDir": "build",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (lualatex)",
+      "tools": [
+        "lualatex"
+      ]
+    },
+    {
+      "name": "latexmk 🔃",
+      "tools": [
+        "latexmk"
+      ]
+    },
+    {
+      "name": "latexmk (xelatex)",
+      "tools": [
+        "xelatexmk"
+      ]
+    },
+    {
+      "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+      "tools": [
+        "pdflatex",
+        "bibtex",
+        "pdflatex",
+        "pdflatex"
+      ]
+    },
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "lualatex",
+      "command": "lualatex",
+      "args": [
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-file-line-error",
+          "-pdf",
+          "-output-directory=%OUTDIR%",           
+          "%DOC%"
+      ],
+      },
+  ],
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    },
+    "Ubuntu (WSL)": {
+      "path": "C:\\Windows\\System32\\wsl.exe",
+      "args": [
+        "-d",
+        "Ubuntu"
+      ]
+    }
+  },
+  "workbench.editor.pinnedTabSizing": "compact",
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "workbench.colorTheme": "Tokyo Night",
+  "cSpell.userWords": [
+    "subarray"
+  ],
+  "python.formatting.provider": "black",
+  "cSpell.ignoreWords": [
+    "basicstyle",
+    "breaklines",
+    "deletekeywords"
+  ],
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "c",
+    "cpp",
+    "csharp",
+    "css",
+    "elixir",
+    "erlang",
+    "git-commit",
+    "go",
+    "graphql",
+    "handlebars",
+    "haskell",
+    "html",
+    "jade",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "jsonc",
+    "jupyter",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "plaintext",
+    "python",
+    "pug",
+    "restructuredtext",
+    "rust",
+    "scala",
+    "scss",
+    "scminput",
+    "swift",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "yaml",
+    "yml"
+  ],
+  "cSpell.enableFiletypes": [
+    "!json"
+  ],
+  "editor.stickyScroll.enabled": true,
+  "workbench.editorAssociations": {
+    "*.plist": "default"
+  },
 }

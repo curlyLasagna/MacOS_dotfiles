@@ -27,28 +27,26 @@ set fish_color_error red --underline
 set fish_pager_color_selected_background --background=5A5A5A -d
 set fish_pager_color_selected_prefix 028DB8
 set fish_color_command 70B431
-set fish_color_quote 00FFD6
+# set fish_color_quote 00FFD6
 
-# Vi-mod
+# Vi-mode
 fish_default_key_bindings
 # fish_vi_key_bindings insert
 # set fish_cursor_insert line
 # set fish_cursor_replace_one underscore
 
 # Environment variables
-set -xg VISUAL hx
-# Set bat as pager
-set -xg MANPAGER "sh -c 'col -bx | bat -l man -p'"
-# NVM
-set -xg NVM_DIR $HOME/.nvm
-# MacOS SDK
-set -xg SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk
+set -x VISUAL emacs
+# Set bat as pager (I cannot read text with a white background. Disabling for now)
+# set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+
+# bun
+set -x BUN_INSTALL "/Users/luis/.bun"
 
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
 # Starship prompt
 starship init fish | source
-# bun
-set -Ux BUN_INSTALL "/Users/luis/.bun"
 fish_add_path "/Users/luis/.bun/bin"
 
 thefuck --alias | source
+source /opt/homebrew/opt/asdf/libexec/asdf.fish

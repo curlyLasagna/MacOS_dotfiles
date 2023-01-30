@@ -3,8 +3,9 @@ add_newline = true
 scan_timeout = 10
 
 format = """
-[┌]()$username$directory$git_branch $all$fill$git_status$git_commit $shell$character
-[└─>]() """
+$username$directory$git_branch $all$fill$git_status$git_commit $shell$character
+\\$[ ]()
+"""
 
 [line_break]
 disabled = true
@@ -13,8 +14,8 @@ disabled = true
 symbol = " "
 
 [character]
-success_symbol = "[](cyan)"
-error_symbol = "[](red)"
+success_symbol = '[❯]()'
+error_symbol = '[✖]()'
 
 [git_branch]
 format = "$symbol$branch"
@@ -42,9 +43,8 @@ up_to_date = "✓"
 staged = '[++\($count\)](green)'
 
 [java]
-symbol = "💩 "
+symbol = "💩 "
 
 [username]
-format = "[   ]()"
-show_always = true
-disabled = false
+show_always = false
+disabled = true
