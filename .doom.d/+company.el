@@ -1,33 +1,15 @@
 ;;; +company.el -*- lexical-binding: t; -*-
 (after! company
-  (setq company-idle-delay 0.1
-        company-minimum-prefix-length 3
+  (setq company-idle-delay 0.2
+        company-minimum-prefix-length 2
         company-selection-wrap-around t
-        company-ispell-available nil
-        company-tooltip-limit 5
-        company-tooltip-minimum 3
-        company-tooltip-flip-when-above t
-        company-dabbrev-ignore-case 'keep-prefix
-        company-preview-overlay t
-        company-files-exclusions '(".DS_Store" ".git"))
-        (setq company-show-quick-access t)
-        (setq company-box-doc-no-wrap nil)
-
-  ;; (set-company-backend!
-  ;;   '(text-mode
-  ;;     markdown-mode)
-  ;;   '(:separate
-  ;;     company-ispell
-  ;;     company-yasnippet
-  ;;     company-files
-  ;;     company-dabbrev))
-  ;; (set-company-backend!
-  ;;   '(prog-mode)
-  ;;   '(:separate
-  ;;     company-files
-  ;;     company-dabbrev-code
-  ;;     company-dabbrev
-  ;;     ))
+        company-tooltip-limit 20
+        company-tooltip-minimum 6
+        company-tooltip-flip-when-above 'nil
+        company-tooltip-maximum-width 120
+        company-tooltip-minimum-width 30
+        company-show-quick-access 't
+        )
 
   ;; https://abdelhakbougouffa.pro/posts/config/#tweaks
   ;; Disable company in these modes
@@ -38,20 +20,14 @@
           help-mode
           gud-mode
           vterm-mode
+          org-journal-mode
           )))
 
 (map!
  (:after company
-  (:map company-active-map
-   ;; Don't interfere with `evil-delete-backward-word' in insert mode
-   "C-w"        nil
-
-   ;; Navigate candidates
-   "C-j"        #'company-other-backend
-   "C-k"        #'company-other-backend
-   "C-l"        #'company-complete-selection
-   "C-SPC"      #'company-complete-common
-   [escape]     (λ! (company-abort) (evil-normal-state 1))
-
-   ;; filter or show docs for candidate
-   "C-h"        #'company-show-doc-buffer)))
+         (:map company-active-map
+               ;; Navigate candidates
+               "C-j"        #'company-other-backend
+               ;; [escape]     (λ! (company-abort) (evil-normal-state 1))
+               ;; filter or show docs for candidate
+               "C-h"        #'company-show-doc-buffer)))

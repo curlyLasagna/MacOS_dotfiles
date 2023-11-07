@@ -1,8 +1,8 @@
 # open terminal
-alt - return : alacritty msg create-window || /Applications/Alacritty.app/Contents/MacOS/alacritty 
-alt - e      : open ~
+# alt - return : alacritty msg create-window || /Applications/Alacritty.app/Contents/MacOS/alacritty
+# alt - e      : open ~
 # Toggle MacOs Menubar
-ctrl + alt - m : osascript ~/.local/bin/hide_Bar.scpt
+# ctrl + alt - m : osascript ~/.local/bin/hide_Bar.scpt
 
 # Focus window
 #lalt - h : yabai -m window --focus west || \
@@ -81,18 +81,22 @@ ctrl + alt - m : osascript ~/.local/bin/hide_Bar.scpt
 #ctrl + alt + cmd - up : yabai -m window --insert north
 #ctrl + alt + cmd - right : yabai -m window --insert east
 #
-## float / unfloat window
-#lalt - space : yabai -m window --toggle float; \
-#                     yabai -m window --grid 4:4:1:1:2:2
-#
-## stack
-#ctrl + alt - a : yabai -m space --layout stack
-#
-## bsp
-#ctrl + alt - s : yabai -m space --layout bsp
-#
-## float
-#ctrl + alt - d : yabai -m space --layout float
+# float / unfloat window
+lctrl + lcmd + lalt - space:yabai -m window --toggle float; \
+                    yabai -m window --grid 4:4:1:1:2:2
+
+# For 3rd party keyboards without volume controls
+lctrl + lcmd + lalt - up:m volume up
+lctrl + lcmd + lalt - down:m volume down
+
+# stack
+ctrl + alt - a:         yabai -m space --layout stack
+
+# bsp
+ctrl + alt - s:         yabai -m space --layout bsp
+
+# float
+ctrl + alt - d:         yabai -m space --layout float
 #
 ## Fullscreen
 #ctrl - return: yabai -m window --toggle zoom-fullscreen

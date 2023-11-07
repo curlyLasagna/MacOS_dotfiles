@@ -1,335 +1,141 @@
 {
-  // VSapceCode
-  // "vspacecode.bindingOverrides": [{
-  //   "keys": "j.[",
-  //   "name": "Go to previous problem",
-  //   "type": "command",
-  //   "command":"workbench."
-  // }],
-  // Vim
-  "vim.foldfix": true,
-  "vim.easymotion": true,
-  "vim.useSystemClipboard": true,
-  "vim.surround": true,
-  "vim.smartRelativeLine": true,
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
-    },
-    {
-      "before": [
-        ","
-      ],
-      "commands": [
-        "vspacecode.space",
-        {
-          "command": "whichkey.triggerKey",
-          "args": "m"
-        }
-      ]
-    }
-  ],
-  "vim.insertModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "j",
-        "k"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    },
-    {
-      "before": [
-        "<C-a>"
-      ],
-      "commands": [
-        "cursorHome"
-      ]
-    },
-    {
-      "before": [
-        "<C-e>"
-      ],
-      "commands": [
-        "cursorEnd"
-      ]
-    },
-  ],
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
-    },
-    {
-      "before": [
-        ","
-      ],
-      "commands": [
-        "vspacecode.space",
-        {
-          "command": "whichkey.triggerKey",
-          "args": "m"
-        }
-      ]
-    }
-  ],
-  // Terminal
-  "terminal.explorerKind": "external",
-  "terminal.external.osxExec": "Terminal.app",
-  "terminal.external.linuxExec": "alacritty",
-  "terminal.integrated.cwd": "${workspaceFolder}",
-  "terminal.integrated.splitCwd": "workspaceRoot",
-  "terminal.integrated.fontFamily": "'Hack Nerd Font', 'Hack NF'",
-  "terminal.external.windowsExec": "C:\\Users\\lgascon1\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\wt.exe",
-  "terminal.integrated.fontSize": 12,
-  // Editor 
-  "editor.fontFamily": " 'Fira Code', 'JetBrains Mono','Hack NF'",
-  "editor.fontLigatures": true,
-  "editor.fontWeight": "250",
-  "editor.suggestSelection": "first",
-  "editor.wordWrap": "on",
-  "editor.acceptSuggestionOnCommitCharacter": false,
-  "editor.defaultFormatter": "vscodevim.vim",
-  "editor.fontSize": 12,
-  "editor.selectionHighlight": false,
-  "editor.suggest.snippetsPreventQuickSuggestions": false,
-  "editor.tabCompletion": "onlySnippets",
-  "editor.wordBasedSuggestions": false,
-  "editor.scrollbar.horizontal": "hidden",
-  "editor.scrollbar.vertical": "hidden",
-  "editor.minimap.enabled": false,
-  "editor.tabSize": 2,
-  "editor.smoothScrolling": true,
-  "zenMode.fullScreen": false,
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "java.semanticHighlighting.enabled": true,
-  "sync.gist": "59203f673cfbe015581bb42bd67049f7",
-  "workbench.startupEditor": "newUntitledFile",
-  "liveServer.settings.donotShowInfoMsg": true,
-  "liveServer.settings.donotVerifyTags": true,
-  "explorer.confirmDragAndDrop": false,
-  "vsicons.dontShowNewVersionMessage": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "telemetry.telemetryLevel": "off",
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "emmet.includeLanguages": {
-    "django-html": "html",
-    "markdown": "html"
-  },
-  "[dart]": {
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.rulers": [
-      80
-    ],
-  },
-  "editor.accessibilitySupport": "off",
-  "latex-workshop.view.pdf.viewer": "tab",
-  "files.exclude": {
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
-  },
-  "markdown-pdf.headerTemplate": "<div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \"> <span class='date'></span></div>",
-  "yaml.schemas": {
-    "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
-  },
-  "workbench.list.smoothScrolling": true,
-  "customizeUI.activityBar": "bottom",
-  "customizeUI.titleBar": "regular",
-  "security.workspace.trust.untrustedFiles": "open",
-  "window.autoDetectHighContrast": false,
-  "emmet.excludeLanguages": [],
-  "workbench.layoutControl.enabled": false,
-  "window.titleBarStyle": "custom",
-  "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
-  "workbench.activityBar.visible": false,
-  "redhat.telemetry.enabled": false,
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.preferredLightColorTheme": "Nord Light Brighter",
-  "workbench.preferredDarkColorTheme": "Tokyo Night",
-  "window.autoDetectColorScheme": true,
-  "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "vscode.css-language-features"
-  },
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
-  },
-  "[latex]": {
-    "editor.defaultFormatter": "James-Yu.latex-workshop"
-  },
-  "[java]": {
-    "editor.defaultFormatter": "redhat.java"
-  },
-  "terminal.integrated.env.osx": {
-    "FIG_NEW_SESSION": "1"
-  },
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
-  "latex-workshop.latex.autoBuild.run": "onSave",
-  "latex-workshop.latex.autoBuild.interval": 2000,
-  "latex-workshop.latex.outDir": "build",
-  "latex-workshop.latex.recipes": [
+  "catppuccin.bracketMode": "neovim",
+  "editor.accessibilitySupport": "off",
+  "editor.cursorBlinking": "solid",
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.lineNumbers": "relative",
+  "editor.matchBrackets": "never",
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "trailing",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.verticalScrollbarSize": -1,
+  "editor.wordWrap": "on",
+  "errorLens.fontWeight": "300",
+  "errorLens.messageEnabled": false,
+  "explorer.openEditors.visible": 1,
+  "git.openRepositoryInParentFolders": "always",
+  "latex-workshop.latex.autoClean.run": "onSucceeded",
+  "latex-workshop.latex.outDir": "out",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "markdown-preview-enhanced.enableScriptExecution": true,
+  "markdown-preview-enhanced.pandocPath": "/opt/homebrew/bin/pandoc",
+  "markdown-preview-enhanced.previewTheme": "newsprint.css",
+  "markdown.extension.preview.autoShowPreviewToSide": false,
+  "redhat.telemetry.enabled": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "svelte.enable-ts-plugin": true,
+  "terminal.external.osxExec": "alacritty.app",
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.enableImages": false,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "terminal.integrated.lineHeight": 1.2,
+  "typst-lsp.exportPdf": "never",
+  "whichkey.bindingOverrides": [
     {
-      "name": "latexmk (lualatex)",
-      "tools": [
-        "lualatex"
-      ]
-    },
-    {
-      "name": "latexmk 🔃",
-      "tools": [
-        "latexmk"
-      ]
-    },
-    {
-      "name": "latexmk (xelatex)",
-      "tools": [
-        "xelatexmk"
-      ]
-    },
-    {
-      "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
-      "tools": [
-        "pdflatex",
-        "bibtex",
-        "pdflatex",
-        "pdflatex"
-      ]
-    },
-  ],
-  "latex-workshop.latex.tools": [
-    {
-      "name": "latexmk",
-      "command": "latexmk",
-      "args": [
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "-pdf",
-        "-outdir=%OUTDIR%",
-        "%DOC%"
-      ]
-    },
-    {
-      "name": "lualatex",
-      "command": "lualatex",
-      "args": [
-          "-synctex=1",
-          "-interaction=nonstopmode",
-          "-file-line-error",
-          "-pdf",
-          "-output-directory=%OUTDIR%",           
-          "%DOC%"
+      "bindings": [
+        {
+          "command": "editor.action.revealDefinitionAside",
+          "key": "D",
+          "name": "Open definition to the side",
+          "type": "command"
+        },
+        {
+          "command": "editor.action.peekDefinition",
+          "key": "d",
+          "name": "Peek definition",
+          "type": "command"
+        },
+        {
+          "command": "editor.action.peekTypeDefinition",
+          "key": "t",
+          "name": "Peek type definition",
+          "type": "command"
+        },
+        {
+          "command": "editor.action.rename",
+          "key": "r",
+          "name": "Rename symbol",
+          "type": "command"
+        }
       ],
-      },
-  ],
-  "terminal.integrated.profiles.windows": {
-    "PowerShell": {
-      "source": "PowerShell",
-      "icon": "terminal-powershell"
-    },
-    "Command Prompt": {
-      "path": [
-        "${env:windir}\\Sysnative\\cmd.exe",
-        "${env:windir}\\System32\\cmd.exe"
-      ],
-      "args": [],
-      "icon": "terminal-cmd"
-    },
-    "Git Bash": {
-      "source": "Git Bash"
-    },
-    "Ubuntu (WSL)": {
-      "path": "C:\\Windows\\System32\\wsl.exe",
-      "args": [
-        "-d",
-        "Ubuntu"
-      ]
+      "keys": "c",
+      "name": "Code actions",
+      "type": "bindings"
     }
-  },
-  "workbench.editor.pinnedTabSizing": "compact",
-  "[cpp]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
-  "workbench.colorTheme": "Tokyo Night",
-  "cSpell.userWords": [
-    "subarray"
   ],
-  "python.formatting.provider": "black",
-  "cSpell.ignoreWords": [
-    "basicstyle",
-    "breaklines",
-    "deletekeywords"
-  ],
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "cSpell.enabledLanguageIds": [
-    "asciidoc",
-    "c",
-    "cpp",
-    "csharp",
-    "css",
-    "elixir",
-    "erlang",
-    "git-commit",
-    "go",
-    "graphql",
-    "handlebars",
-    "haskell",
-    "html",
-    "jade",
-    "java",
-    "javascript",
-    "javascriptreact",
-    "jsonc",
-    "jupyter",
-    "latex",
-    "less",
-    "markdown",
-    "php",
-    "plaintext",
-    "python",
-    "pug",
-    "restructuredtext",
-    "rust",
-    "scala",
-    "scss",
-    "scminput",
-    "swift",
-    "text",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "yaml",
-    "yml"
-  ],
-  "cSpell.enableFiletypes": [
-    "!json"
-  ],
-  "editor.stickyScroll.enabled": true,
+  "window.autoDetectColorScheme": true,
+  "workbench.colorTheme": "Dracula",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.showTabs": false,
   "workbench.editorAssociations": {
-    "*.plist": "default"
+    "*.pdf": "latex-workshop-pdf-hook"
   },
+  "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+  "workbench.preferredLightColorTheme": "Catppuccin Latte",
+  "workbench.productIconTheme": "el-vsc-v1-icons",
+  "workbench.sideBar.location": "right",
+  "zenMode.fullScreen": false,
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "dart.flutterAdbConnectOnChromeOs": true,
+  "markdown-preview-enhanced.chromePath": "/Applications/Thorium.app/Contents/MacOS/Thorium",
+  "editor.fontLigatures": true,
+   // Vim easymotion is required for Jump menu - <SPC> j
+   "vim.easymotion": true,
+   // Use system clipboard for vim
+   "vim.useSystemClipboard": true,
+   // Trigger the main which key menu with in the active editor with vim
+   // This cannot be put into keybindings.json because it will
+   // create conflict with Vim.
+   // https://github.com/stevenguh/spacecode/issues/3
+   "vim.normalModeKeyBindingsNonRecursive": [
+       {
+           "before": ["<space>"],
+           "commands": ["vspacecode.space"]
+       },
+       {
+           "before": [","],
+           "commands": [
+               "vspacecode.space",
+               {
+                   "command": "whichkey.triggerKey",
+                   "args": "m"
+               }
+           ]
+       }
+   ],
+   "vim.visualModeKeyBindingsNonRecursive": [
+       {
+           "before": ["<space>"],
+           "commands": ["vspacecode.space"]
+       },
+       {
+           "before": [","],
+           "commands": [
+               "vspacecode.space",
+               {
+                   "command": "whichkey.triggerKey",
+                   "args": "m"
+               }
+           ]
+       },
+       {
+           "before": [">"],
+           "commands": ["editor.action.indentLines"]
+       },
+       {
+           "before": ["<"],
+           "commands": ["editor.action.outdentLines"]
+       }
+  ],
+  "window.zoomLevel": 1
 }
